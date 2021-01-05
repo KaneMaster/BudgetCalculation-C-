@@ -20,14 +20,57 @@ namespace BudgetCalculation
     /// </summary>
     public partial class MainWindow : Window
     {
+        BudgetList bl = new BudgetList();
+
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();        }
+
+        private void ReloadExpenseData()
+        {
+            ExpenseGrid.ItemsSource = null;
+            ExpenseGrid.ItemsSource = bl.elements;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {            
+            bl.AddElement(new BudgetElement
+            {
+                Group = "Группа 1",
+                SubGroup = "Подгруппа 1",
+                Name = "1",
+                Price = 10,
+                CountGoods = 1,
+                IsExpense = true,
+                edIzm = "шт."
+            });
+            bl.AddElement(new BudgetElement
+            {
+                Group = "Группа 1",
+                SubGroup = "Подгруппа 1",
+                Name = "2",
+                Price = 30,
+                CountGoods = 1,
+                IsExpense = true,
+                edIzm = "шт."
+            });
+            bl.AddElement(new BudgetElement
+            {
+                Group = "Группа 1",
+                SubGroup = "Подгруппа 2",
+                Name = "33",
+                Price = 10,
+                CountGoods = 1,
+                IsExpense = true,
+                edIzm = "шт."
+            });
+            ReloadExpenseData();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BudgetElement b = new BudgetElement { }
+            bl.DelElement(ExpenseGrid.SelectedIndex);
+            ReloadExpenseData();
         }
     }
 }
