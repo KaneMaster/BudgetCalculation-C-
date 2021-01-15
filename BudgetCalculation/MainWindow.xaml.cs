@@ -26,6 +26,9 @@ namespace BudgetCalculation
         {
             InitializeComponent();        }
 
+        /// <summary>
+        /// Reload information about expenses 
+        /// </summary>
         private void ReloadExpenseData()
         {
             ExpenseGrid.ItemsSource = null;
@@ -41,8 +44,7 @@ namespace BudgetCalculation
                 Name = "1",
                 Price = 10,
                 CountGoods = 1,
-                IsExpense = true,
-                edIzm = "шт."
+                Units = "шт."
             });
             bl.AddElement(new BudgetElement
             {
@@ -51,8 +53,7 @@ namespace BudgetCalculation
                 Name = "2",
                 Price = 30,
                 CountGoods = 1,
-                IsExpense = true,
-                edIzm = "шт."
+                Units = "шт."
             });
             bl.AddElement(new BudgetElement
             {
@@ -61,15 +62,14 @@ namespace BudgetCalculation
                 Name = "33",
                 Price = 10,
                 CountGoods = 1,
-                IsExpense = true,
-                edIzm = "шт."
+                Units = "шт."
             });
             ReloadExpenseData();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bl.DelElement(ExpenseGrid.SelectedIndex);
+           // bl.DelElement(ExpenseGrid.SelectedIndex);
             ReloadExpenseData();
         }
     }

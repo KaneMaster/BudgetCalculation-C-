@@ -1,0 +1,34 @@
+﻿<Window x:Class="BudgetCalculation.AddGoodsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetCalculation"
+        mc:Ignorable="d"
+        Title="AddGoodsWindow" Height="450" Width="420" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.85*">
+            </RowDefinition>
+            <RowDefinition Height="0.15*" ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.125*"></RowDefinition>
+                <RowDefinition Height="0.125*"></RowDefinition>
+                <RowDefinition Height="0.125*"></RowDefinition>
+                <RowDefinition Height="0.125*"></RowDefinition>
+                <RowDefinition Height="0.4*"></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+        <StackPanel Orientation="Horizontal"  Grid.Row="1">
+            <Button  Width="120" Height="30" Margin="140 0 0 0" Content="ОК" IsDefault="True"></Button>
+            <Button  Width="120" Height="30" Margin="10" Content="Отмена" IsCancel="True"></Button>
+        </StackPanel>
+    </Grid>
+    
+</Window>
