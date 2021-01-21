@@ -20,11 +20,21 @@ namespace BudgetCalculation
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         BudgetList bl = new BudgetList();
 
         public MainWindow()
         {
-            InitializeComponent();        }
+            InitializeComponent();
+            Binding b = new Binding("DateStart");
+            b.Source = bl.info;
+            b.StringFormat = "dd.MM.yyyy";
+            DateStartDP.SetBinding(TextBlock.TextProperty, b);
+            b = new Binding("DateEnd");
+            b.Source = bl.info;
+            b.StringFormat = "dd.MM.yyyy";
+            DateEndDP.SetBinding(TextBlock.TextProperty, b);
+        }
 
         /// <summary>
         /// Reload information about expenses 
@@ -32,7 +42,7 @@ namespace BudgetCalculation
         private void ReloadExpenseData()
         {
             ExpenseGrid.ItemsSource = null;
-            ExpenseGrid.ItemsSource = bl.elements;
+            ExpenseGrid.ItemsSource = bl.elements;            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

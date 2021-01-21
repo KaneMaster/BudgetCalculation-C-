@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BudgetCalculation"
         mc:Ignorable="d"
         Title="Добавление товара" Height="350
-        " Width="420" ResizeMode="NoResize">
+        " Width="500" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"></Setter>
@@ -32,7 +32,7 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.45*"></ColumnDefinition>
-                <ColumnDefinition Width="0.45*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="0.1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -51,8 +51,8 @@
             <TextBlock Grid.Row="4" Grid.Column="0">Количество</TextBlock>
             <TextBlock Grid.Row="5" Grid.Column="0">Ед. изм.</TextBlock>
             <ComboBox Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="groupCB" />
-            <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="subgroupCB"/>
-            <ComboBox Grid.Row="2" Grid.Column="1"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="subgroupCB_SelectionChanged" x:Name="subgroupCB"/>
+            <ComboBox Grid.Row="2" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="goodsCB"/>
             <TextBox Grid.Row="3" Grid.Column="1"/> 
             <TextBox Grid.Row="4" Grid.Column="1"/>
             <ComboBox Grid.Row="5" Grid.Column="1"/>

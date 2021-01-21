@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace BudgetCalculation
 {
-    class BudgetList
+    class BudgetList : DependencyObject
     {
-        
+        public ListInfo info = new ListInfo();
         public List<BudgetElement> elements = new List<BudgetElement>();
-
         double summList = 0;
+
+        
         
         void Calculate()
         {

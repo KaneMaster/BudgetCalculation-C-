@@ -23,11 +23,8 @@ namespace BudgetCalculation
 
         List<ProductInfo> groups;
         List<ProductInfo> subGroups;
+        List<ProductInfo> goods;
 
-        List<ProductInfo> products = new List<ProductInfo>{
-            new ProductInfo { Id = 1, Name = "Товар 1" },
-            new ProductInfo { Id = 2, Name = "Товар 2" },
-        };
 
         public AddGoodsWindow()
         {            
@@ -40,5 +37,13 @@ namespace BudgetCalculation
         }
 
 
+
+        private void subgroupCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            goodsCB.ItemsSource = null;
+            ComboBox cb = (ComboBox)sender;
+            goods = model.GetGoods(Convert.ToInt32(cb.SelectedValue));
+            goodsCB.ItemsSource = goods;
+        }
     }
 }

@@ -69,6 +69,19 @@ namespace BudgetCalculation
             return res;
         }
 
+        public List<ProductInfo> GetGoods(int subGroupId)
+        {
+            SQLiteCommand comm = new SQLiteCommand("select * from [goods] where subgroup_id = " + subGroupId.ToString(), conn);
+            SQLiteDataReader reader = comm.ExecuteReader();
+            List<ProductInfo> res = new List<ProductInfo>();
+            while (reader.Read())
+            {
+                res.Add(new ProductInfo { Id = Convert.ToInt32(reader[0]), Name = reader[2].ToString() });
+            }
+            reader.Close();
+            return res;
+        }
+
 
 
     }

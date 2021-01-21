@@ -5,13 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BudgetCalculation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800"
+        Title="MainWindow" Height="600" Width="1400"
         Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5px" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="DatePicker">
+            <Setter Property="Margin" Value="5px" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5px" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="200px" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="40px"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" x:Name="ListInfo">
+            <TextBlock>Начало периода: </TextBlock>
+            <TextBlock x:Name="DateStartDP" Text="{Binding Path=DateStart, StringFormat=d}" ></TextBlock>
+            <TextBlock>Окончание периода: </TextBlock>
+            <TextBlock x:Name="DateEndDP" Text="{Binding Path=DateStart, StringFormat=d}" ></TextBlock>
+            <TextBlock>Название: </TextBlock>
+            <TextBox x:Name="CaptionList"></TextBox>
+        </StackPanel>
         <DataGrid x:Name="ExpenseGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Группа" Binding="{Binding Path = Group}"></DataGridTextColumn>
