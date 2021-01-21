@@ -25,35 +25,56 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40px"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" x:Name="ListInfo">
-            <TextBlock>Начало периода: </TextBlock>
-            <TextBlock x:Name="DateStartDP" Text="{Binding Path=DateStart, StringFormat=d}" ></TextBlock>
-            <TextBlock>Окончание периода: </TextBlock>
-            <TextBlock x:Name="DateEndDP" Text="{Binding Path=DateStart, StringFormat=d}" ></TextBlock>
-            <TextBlock>Название: </TextBlock>
-            <TextBox x:Name="CaptionList"></TextBox>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="50px"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name ="InfoPanel"  Grid.Row="0" Orientation="Horizontal">
+                <TextBlock>Начало периода:</TextBlock>
+                <TextBlock x:Name="DateStartDP" Text="{Binding Path=DateStart, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+                <TextBlock>Окончание периода:</TextBlock>
+                <TextBlock x:Name="DateEndDP"  Text="{Binding Path=DateStart, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+                <TextBlock>Название:</TextBlock>
+                <TextBlock x:Name="CaptionTB"  Text="{Binding Path=Caption, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                <TextBlock>Остаток с прошлого листа:</TextBlock>
+                <TextBlock x:Name="LastListTB"  Text="{Binding Path=LastSumm, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            </StackPanel>
+            <Button Content="Лист" Grid.Column="1" Click="Button_Click_1" />
+        </Grid>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Доходы" Height="20px"/>
+            <DataGrid x:Name="IncomeGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Группа" />
+                    <DataGridTextColumn Header="Подгруппа" />
+                    <DataGridTextColumn Header="Сумма" />
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
-        <DataGrid x:Name="ExpenseGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Группа" Binding="{Binding Path = Group}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Подгруппа" Binding="{Binding Path = SubGroup}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Path = Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Path = Price}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Кол-во" Binding="{Binding Path = CountGoods}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ед.изм." Binding="{Binding Path = Units}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Итого" Binding="{Binding Path = Summ}" ></DataGridTextColumn>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Click="Button_Click">sass</Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-            
-        </DataGrid>
-
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Расходы" Height="20px" />
+            <DataGrid x:Name="ExpenseGrid"  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Группа" Binding="{Binding Path = Group}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Подгруппа" Binding="{Binding Path = SubGroup}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Path = Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Path = Price}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Кол-во" Binding="{Binding Path = CountGoods}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Ед.изм." Binding="{Binding Path = Units}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Итого" Binding="{Binding Path = Summ}" ></DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Button_Click">sass</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Window>

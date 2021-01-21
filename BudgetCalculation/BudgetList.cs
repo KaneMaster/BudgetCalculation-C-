@@ -7,7 +7,10 @@ namespace BudgetCalculation
 {
     class BudgetList : DependencyObject
     {
-        public ListInfo info = new ListInfo();
+        public ListInfo info = new ListInfo {
+            Caption = "11",
+            LastSumm = 12.00d
+        };
         public List<BudgetElement> elements = new List<BudgetElement>();
         double summList = 0;
 

@@ -26,14 +26,7 @@ namespace BudgetCalculation
         public MainWindow()
         {
             InitializeComponent();
-            Binding b = new Binding("DateStart");
-            b.Source = bl.info;
-            b.StringFormat = "dd.MM.yyyy";
-            DateStartDP.SetBinding(TextBlock.TextProperty, b);
-            b = new Binding("DateEnd");
-            b.Source = bl.info;
-            b.StringFormat = "dd.MM.yyyy";
-            DateEndDP.SetBinding(TextBlock.TextProperty, b);
+            InfoPanel.DataContext = bl.info;
         }
 
         /// <summary>
@@ -81,6 +74,11 @@ namespace BudgetCalculation
         {
            // bl.DelElement(ExpenseGrid.SelectedIndex);
             ReloadExpenseData();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
