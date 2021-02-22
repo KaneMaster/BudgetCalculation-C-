@@ -37,7 +37,7 @@
                 <TextBlock>Начало периода:</TextBlock>
                 <TextBlock x:Name="DateStartDP" Text="{Binding Path=DateStart, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
                 <TextBlock>Окончание периода:</TextBlock>
-                <TextBlock x:Name="DateEndDP"  Text="{Binding Path=DateStart, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+                <TextBlock x:Name="DateEndDP"  Text="{Binding Path=DateEnd, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
                 <TextBlock>Название:</TextBlock>
                 <TextBlock x:Name="CaptionTB"  Text="{Binding Path=Caption, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
                 <TextBlock>Остаток с прошлого листа:</TextBlock>

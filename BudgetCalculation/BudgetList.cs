@@ -7,14 +7,17 @@ namespace BudgetCalculation
 {
     class BudgetList : DependencyObject
     {
-        public ListInfo info = new ListInfo {
-            Caption = "11",
-            LastSumm = 12.00d
-        };
+        private BudgetModel model = new BudgetModel();
+
+        public ListInfo info;
         public List<BudgetElement> elements = new List<BudgetElement>();
+
         double summList = 0;
 
-        
+        public BudgetList() 
+        {
+            info = model.GetListInfo();
+        }        
         
         void Calculate()
         {

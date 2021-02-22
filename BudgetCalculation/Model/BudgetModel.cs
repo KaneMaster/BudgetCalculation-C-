@@ -34,6 +34,9 @@ namespace BudgetCalculation
             conn.Open();
         }
 
+        /// <summary>
+        /// Disconnect to database
+        /// </summary>
         void Disconnect()
         {
             conn.Close();
@@ -56,6 +59,10 @@ namespace BudgetCalculation
             return res;
         }
 
+        /// <summary>
+        /// Get a list of subgroups of goods
+        /// </summary>
+        /// <returns>List of subgroups</returns>
         public List<ProductInfo> GetSubGroups()
         {
             SQLiteCommand comm = new SQLiteCommand("select * from [subgroup]", conn);
@@ -69,6 +76,11 @@ namespace BudgetCalculation
             return res;
         }
 
+        /// <summary>
+        /// Get a products' list
+        /// </summary>
+        /// <param name="subGroupId">Subgroup's id</param>
+        /// <returns>List of products</returns>
         public List<ProductInfo> GetGoods(int subGroupId)
         {
             SQLiteCommand comm = new SQLiteCommand("select * from [goods] where subgroup_id = " + subGroupId.ToString(), conn);
@@ -79,6 +91,48 @@ namespace BudgetCalculation
                 res.Add(new ProductInfo { Id = Convert.ToInt32(reader[0]), Name = reader[2].ToString() });
             }
             reader.Close();
+            return res;
+        }
+
+        /// <summary>
+        /// Get information about budget list, which have a maximum beginning date of period  
+        /// </summary>
+        /// <returns>Information about budget list</returns>
+        public ListInfo GetListInfo()
+        {
+            string sql = "SELECT * FROM[lists] where date_start = (select max(date_start) from[lists]) limit 1";
+             
+            SQLiteCommand comm = new SQLiteCommand(sql, conn);
+            SQLiteDataReader reader = comm.ExecuteReader();
+
+            ListInfo res = null;
+            while (reader.Read())
+            {
+                res = new ListInfo(Convert.ToInt32(reader[0]), Convert.ToDateTime(reader[1]), Convert.ToDateTime(reader[2]), reader[3].ToString(), Convert.ToDouble(reader[4]));
+            }
+
+            return res;
+        }
+
+
+        /// <summary>
+        /// Get information about budget list, which have a beginning date of period lower then the parameter 
+        /// </summary>
+        /// <param name="lastDate">Data for search information</param>
+        /// <returns>Information about budget list</returns>
+        public ListInfo GetListInfo(DateTime lastDate)
+        {
+            string sql = "SELECT * FROM[lists] where date_start <= '"+lastDate.ToString("yyyy-MM-dd")+"' limit 1";
+
+            SQLiteCommand comm = new SQLiteCommand(sql, conn);
+            SQLiteDataReader reader = comm.ExecuteReader();
+            
+            ListInfo res = null;
+            while (reader.Read())
+            {
+                res = new ListInfo(Convert.ToInt32(reader[0]), Convert.ToDateTime(reader[1]), Convert.ToDateTime(reader[2]), reader[3].ToString(), Convert.ToDouble(reader[4]));
+            }
+
             return res;
         }
 

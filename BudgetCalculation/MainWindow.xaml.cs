@@ -20,12 +20,14 @@ namespace BudgetCalculation
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        BudgetList bl = new BudgetList();
+
+        BudgetList bl;
 
         public MainWindow()
         {
             InitializeComponent();
+            bl = new BudgetList();
+
             InfoPanel.DataContext = bl.info;
         }
 

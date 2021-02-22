@@ -9,11 +9,12 @@ namespace BudgetCalculation
     {
 
         public static readonly DependencyProperty priceProperty, groupProperty, subGroupProperty, nameProperty,
-            countGoodsProperty, UnitsProperty, summProperty;
+            countGoodsProperty, UnitsProperty, summProperty, idProperty;
 
 
         static BudgetElement()
         {
+            idProperty = DependencyProperty.Register("Id", typeof(int), typeof(BudgetElement), new PropertyMetadata(0));
             priceProperty = DependencyProperty.Register("Price", typeof(double), typeof(BudgetElement), new PropertyMetadata(0d, new PropertyChangedCallback(SummCalculate)));
             groupProperty = DependencyProperty.Register("Group", typeof(string), typeof(BudgetElement), new PropertyMetadata(String.Empty));
             subGroupProperty = DependencyProperty.Register("SubGroup", typeof(string), typeof(BudgetElement), new PropertyMetadata(String.Empty));
@@ -95,6 +96,12 @@ namespace BudgetCalculation
         {
             get => (double)GetValue(summProperty);
             set => SetValue(summProperty, value);
+        }
+
+        public int Id
+        {
+            get => (int)GetValue(idProperty);
+            set => SetValue(idProperty, value);
         }
 
 
