@@ -9,7 +9,7 @@ namespace BudgetCalculation
     {
 
         public static readonly DependencyProperty priceProperty, groupProperty, subGroupProperty, nameProperty,
-            countGoodsProperty, UnitsProperty, summProperty, idProperty;
+            countGoodsProperty, UnitsProperty, summProperty, idProperty, dateProperty;
 
 
         static BudgetElement()
@@ -22,6 +22,7 @@ namespace BudgetCalculation
             countGoodsProperty = DependencyProperty.Register("CountGoods", typeof(int), typeof(BudgetElement), new PropertyMetadata(1, new PropertyChangedCallback(SummCalculate)));            
             UnitsProperty = DependencyProperty.Register("Units", typeof(string), typeof(BudgetElement), new PropertyMetadata(String.Empty));
             summProperty = DependencyProperty.Register("Summ", typeof(double), typeof(BudgetElement), new PropertyMetadata(0d));
+            dateProperty = DependencyProperty.Register("Date", typeof(DateTime), typeof(BudgetElement), new PropertyMetadata(DateTime.Now));
         }
 
         private static void SummCalculate(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -104,6 +105,11 @@ namespace BudgetCalculation
             set => SetValue(idProperty, value);
         }
 
+        public DateTime Date
+        {
+            get => (DateTime)GetValue(dateProperty);
+            set => SetValue(dateProperty, value);
+        }
 
 
 

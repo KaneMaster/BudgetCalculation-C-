@@ -15,6 +15,11 @@
         <Style TargetType="DatePicker">
             <Setter Property="Margin" Value="5px" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Height" Value="25px "/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="7px" />
+            <Setter Property="Width" Value="100px" />
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="5px" />
@@ -30,20 +35,15 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>                
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name ="InfoPanel"  Grid.Row="0" Orientation="Horizontal">
+            <StackPanel x:Name ="InfoPanel"  Orientation="Horizontal">
                 <TextBlock>Начало периода:</TextBlock>
-                <TextBlock x:Name="DateStartDP" Text="{Binding Path=DateStart, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+                <DatePicker x:Name="DateStartDP"></DatePicker>
                 <TextBlock>Окончание периода:</TextBlock>
-                <TextBlock x:Name="DateEndDP"  Text="{Binding Path=DateEnd, StringFormat=dd.MM.yyyy, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
-                <TextBlock>Название:</TextBlock>
-                <TextBlock x:Name="CaptionTB"  Text="{Binding Path=Caption, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
-                <TextBlock>Остаток с прошлого листа:</TextBlock>
-                <TextBlock x:Name="LastListTB"  Text="{Binding Path=LastSumm, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
-            </StackPanel>
-            <Button Content="Лист" Grid.Column="1" Click="Button_Click_1" />
+                <DatePicker x:Name="DateEndDP"></DatePicker>
+                <Button Content="Показать" Click="Button_Click_1" />
+            </StackPanel>            
         </Grid>
         <StackPanel Grid.Row="1">
             <TextBlock Text="Доходы" Height="20px"/>

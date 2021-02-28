@@ -26,9 +26,7 @@ namespace BudgetCalculation
         public MainWindow()
         {
             InitializeComponent();
-            bl = new BudgetList();
-
-            InfoPanel.DataContext = bl.info;
+            bl = new BudgetList();            
         }
 
         /// <summary>
@@ -42,45 +40,22 @@ namespace BudgetCalculation
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {            
-            bl.AddElement(new BudgetElement
-            {
-                Group = "Группа 1",
-                SubGroup = "Подгруппа 1",
-                Name = "1",
-                Price = 10,
-                CountGoods = 1,
-                Units = "шт."
-            });
-            bl.AddElement(new BudgetElement
-            {
-                Group = "Группа 1",
-                SubGroup = "Подгруппа 1",
-                Name = "2",
-                Price = 30,
-                CountGoods = 1,
-                Units = "шт."
-            });
-            bl.AddElement(new BudgetElement
-            {
-                Group = "Группа 1",
-                SubGroup = "Подгруппа 2",
-                Name = "33",
-                Price = 10,
-                CountGoods = 1,
-                Units = "шт."
-            });
-            ReloadExpenseData();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           // bl.DelElement(ExpenseGrid.SelectedIndex);
+            // bl.DelElement(ExpenseGrid.SelectedIndex);
+            
             ReloadExpenseData();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            DateTime d1 = new DateTime(2021, 02, 01);
+            DateTime d2 = new DateTime(2021, 03, 01);
+            bl.GetData(d1, d2);
+            ReloadExpenseData();
         }
     }
 }

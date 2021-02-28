@@ -8,16 +8,9 @@ namespace BudgetCalculation
     class BudgetList : DependencyObject
     {
         private BudgetModel model = new BudgetModel();
-
-        public ListInfo info;
         public List<BudgetElement> elements = new List<BudgetElement>();
 
-        double summList = 0;
-
-        public BudgetList() 
-        {
-            info = model.GetListInfo();
-        }        
+        double summList = 0;    
         
         void Calculate()
         {
@@ -27,6 +20,12 @@ namespace BudgetCalculation
                 summList += element.Summ;
             }
         } 
+
+        public void GetData(DateTime d1, DateTime d2)
+        {
+            elements = model.GetExpensesList(d1, d2);
+        }
+
 
         public void AddElement(BudgetElement element)
         {
