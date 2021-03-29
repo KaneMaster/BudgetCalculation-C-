@@ -57,5 +57,11 @@ namespace BudgetCalculation
             bl.GetData(d1, d2);
             ReloadExpenseData();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            AddGoodsWindow addWindow = new AddGoodsWindow();
+            addWindow.ShowDialog();
+        }
     }
 }

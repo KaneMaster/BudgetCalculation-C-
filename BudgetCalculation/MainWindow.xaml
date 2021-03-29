@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BudgetCalculation"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1400"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5px" />
@@ -56,7 +57,11 @@
             </DataGrid>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <TextBlock Text="Расходы" Height="20px" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Расходы" Height="20px"  />
+                <Button Content="Добавить" Click="Button_Click_2"></Button>
+            </StackPanel>
+            
             <DataGrid x:Name="ExpenseGrid"  AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Группа" Binding="{Binding Path = Group}"></DataGridTextColumn>

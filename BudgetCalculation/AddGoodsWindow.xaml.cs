@@ -45,5 +45,10 @@ namespace BudgetCalculation
             goods = model.GetGoods(Convert.ToInt32(cb.SelectedValue));
             goodsCB.ItemsSource = goods;
         }
+
+        private void ButtonClickAddGood(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

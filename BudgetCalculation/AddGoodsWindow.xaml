@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BudgetCalculation"
         mc:Ignorable="d"
         Title="Добавление товара" Height="350
-        " Width="500" ResizeMode="NoResize">
+        " Width="500" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"></Setter>
@@ -42,27 +43,30 @@
                 <RowDefinition Height="0.12*"></RowDefinition>
                 <RowDefinition Height="0.12*"></RowDefinition>
                 <RowDefinition Height="0.12*"></RowDefinition>
+                <RowDefinition Height="0.12*"></RowDefinition>
                 <RowDefinition Height="0.28*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0">Группа</TextBlock>
-            <TextBlock Grid.Row="1" Grid.Column="0">Подгруппа</TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="0">Товар</TextBlock>
-            <TextBlock Grid.Row="3" Grid.Column="0">Цена</TextBlock>
-            <TextBlock Grid.Row="4" Grid.Column="0">Количество</TextBlock>
-            <TextBlock Grid.Row="5" Grid.Column="0">Ед. изм.</TextBlock>
-            <ComboBox Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="groupCB" />
-            <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="subgroupCB_SelectionChanged" x:Name="subgroupCB"/>
-            <ComboBox Grid.Row="2" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="goodsCB"/>
-            <TextBox Grid.Row="3" Grid.Column="1"/> 
-            <TextBox Grid.Row="4" Grid.Column="1"/>
-            <ComboBox Grid.Row="5" Grid.Column="1"/>
+            <TextBlock Grid.Row="0" Grid.Column="0">Дата добавление</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="0">Группа</TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="0">Подгруппа</TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="0">Товар</TextBlock>
+            <TextBlock Grid.Row="4" Grid.Column="0">Цена</TextBlock>
+            <TextBlock Grid.Row="5" Grid.Column="0">Количество</TextBlock>
+            <TextBlock Grid.Row="6" Grid.Column="0">Ед. изм.</TextBlock>
+            <DatePicker Grid.Row="0" Grid.Column="1" x:Name="Date"></DatePicker>
+            <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="groupCB" />
+            <ComboBox Grid.Row="2" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="subgroupCB_SelectionChanged" x:Name="subgroupCB"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="goodsCB"/>
+            <TextBox Grid.Row="4" Grid.Column="1"/> 
+            <TextBox Grid.Row="5" Grid.Column="1"/>
+            <ComboBox Grid.Row="6" Grid.Column="1"/>
             <Button Style="{StaticResource AddButton}" BorderThickness="0" Grid.Row="0" Grid.Column="2" Content="+"/>
             <Button Style="{StaticResource AddButton}" BorderThickness="0" Grid.Row="1" Grid.Column="2" Content="+"/>
             <Button Style="{StaticResource AddButton}" BorderThickness="0" Grid.Row="2" Grid.Column="2" Content="+"/>
             <Button Style="{StaticResource AddButton}" BorderThickness="0" Grid.Row="5" Grid.Column="2" Content="+"/>
         </Grid>
         <Canvas Grid.Row="1">
-            <Button Width="120" Height="30" Content="ОК" IsDefault="True" Canvas.Right="130" Margin="5"></Button>
+            <Button Width="120" Height="30" Content="ОК" IsDefault="True" Canvas.Right="130" Margin="5" Click="ButtonClickAddGood"></Button>
             <Button Width="120" Height="30" Content="Отмена" IsCancel="True" Canvas.Right="5" Margin="5"></Button>
         </Canvas>
     </Grid>
